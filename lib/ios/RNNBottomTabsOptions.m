@@ -5,6 +5,9 @@ extern const NSInteger BLUR_TOPBAR_TAG;
 @implementation RNNBottomTabsOptions
 
 - (void)applyOn:(UIViewController *)viewController {
+	if (self.visible) {
+		[viewController.tabBarController.tabBar setHidden:![self.visible boolValue]];
+	}
 	if (self.currentTabIndex) {
 		[viewController.tabBarController setSelectedIndex:[self.currentTabIndex unsignedIntegerValue]];
 	}
