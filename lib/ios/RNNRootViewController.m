@@ -62,6 +62,13 @@
 -(void)viewWillAppear:(BOOL)animated{
 	[super viewWillAppear:animated];
 	_isBeingPresented = YES;
+	if (self.navigationController) {
+		if ([self.navigationController viewControllers].firstObject == self) {
+			if (self.options.bottomTabs && self.options.bottomTabs.visible && ![self.options.bottomTabs.visible boolValue]) {
+				[self.tabBarController.tabBar setHidden:YES];
+			}
+		}
+	}
 	[self.options applyOn:self];
 }
 
